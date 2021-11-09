@@ -42,11 +42,12 @@ int main()
 	//removePos(list, 2);
 	addBefore(list, 50, 5);
 	addAfter(list, 100, 5);
+	removeElements(list, 50);
 
 	printList(list);
 	cout << endl << countElements(list) << endl;
-	List* newList = reverseList(list);
-	printList(newList);
+	//List* newList = reverseList(list);
+	//printList(newList);
 	
 	system("pause");
 	return 0;

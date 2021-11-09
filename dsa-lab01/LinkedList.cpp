@@ -318,7 +318,7 @@ bool removeElements(List*& L, int key)
 		return true;
 	}
 
-	if (L->p_head == L->p_tail)
+	if (L->p_head->p_next == NULL)
 	{
 		if (L->p_head->key == key)
 		{
@@ -329,12 +329,27 @@ bool removeElements(List*& L, int key)
 		return true;
 	}
 
-	NODE* tmpNode = L->p_head;
+	NODE* currentNode = L->p_head, *prevNode = NULL;
 
-	while (tmpNode->p_next != NULL && tmpNode->p_next->key == key)
+	while (currentNode != NULL)
 	{
-		tmpNode->p_next = tmpNode->p_next->p_next;
+		if (currentNode->key == key)
+		{
+			if (prevNode != NULL) {
+				prevNode->p_next = currentNode->p_next;
+			}
+			else
+			{
+				L->p_head = currentNode->p_next;
+			}
+		}
+
+		prevNode = currentNode;
+		currentNode = currentNode->p_next;
+
 	}
+
+	
 
 	return true;
 }
